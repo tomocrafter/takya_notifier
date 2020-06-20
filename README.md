@@ -1,7 +1,7 @@
 takya_notifier
 ===
 
-steamrmt.com をスクレイピングし、fcmを通してスマホや、webpushでPCに通知を送ることができるツールです。
+[steamrmt.com](http://steamrmt.com/skinbuy.html) をスクレイピングし、fcmを通してスマホや、webpushでPCに通知を送ることができるツールです。
 
 ## Build
 二通りのビルド方法を用意しています。実行時のエラーを収集、解析または通知するために[Sentry](https://sentry.io/)がデフォルトで入っています。
