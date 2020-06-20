@@ -1,1 +1,3 @@
 takya_notifier
+
+steamrmt.com をスクレイピングし、fcmを通してスマホや、webpushでPCに通知を送ることができるツールです。
