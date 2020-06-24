@@ -452,9 +452,9 @@ dependencies = [
 
 [[package]]
 name = "curl"
-version = "0.4.29"
+version = "0.4.30"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "762e34611d2d5233a506a79072be944fddd057db2f18e04c0d6fa79e3fd466fd"
+checksum = "b0447a642435be046540f042950d874a4907f9fee28c0513a0beb3ba89f91eb7"
 dependencies = [
  "curl-sys",
  "libc",
@@ -467,9 +467,9 @@ dependencies = [
 
 [[package]]
 name = "curl-sys"
-version = "0.4.31+curl-7.70.0"
+version = "0.4.32+curl-7.70.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "dcd62757cc4f5ab9404bc6ca9f0ae447e729a1403948ce5106bd588ceac6a3b0"
+checksum = "834425a2f22fdd621434196965bf99fbfd9eaed96348488e27b7ac40736c560b"
 dependencies = [
  "cc",
  "libc",
@@ -1005,7 +1005,7 @@ dependencies = [
  "async-std",
  "futures 0.3.5",
  "http-types",
- "isahc 0.9.4",
+ "isahc 0.9.5",
  "js-sys",
  "log",
  "wasm-bindgen",
@@ -1117,9 +1117,9 @@ dependencies = [
 
 [[package]]
 name = "isahc"
-version = "0.9.4"
+version = "0.9.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "2494793ea0eaa3a17154ca8aa0a02b941abd269b7eb904f5f0a4de3bbbe6b7fa"
+checksum = "f54e7cf252df9a36605ccfabea2a754ad30c24b51b77f830486e555ac8e76bce"
 dependencies = [
  "bytes 0.5.5",
  "crossbeam-channel 0.4.2",
@@ -2239,7 +2239,6 @@ dependencies = [
  "diesel-derive-enum",
  "dotenv",
  "futures 0.3.5",
- "lazy_static",
  "regex",
  "scraper",
  "sentry",
@@ -2476,9 +2475,9 @@ checksum = "caaa9d531767d1ff2150b9332433f32a24622147e5ebb1f26409d5da67afd479"
 
 [[package]]
 name = "unicode-xid"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "826e7639553986605ec5979c7dd957c7895e93eabed50ab2ffa7f6128a75097c"
+checksum = "f7fe0bb3479651439c9112f72b6c505038574c9fbb575ed1bf3b797fa39dd564"
 
 [[package]]
 name = "universal-hash"

@@ -19,7 +19,6 @@ strum_macros = "0.18.0"
 serde_with_macros = "1.1.0"
 diesel = { version = "1.4.5", features = [ "mysql" ] }
 diesel-derive-enum = { version = "1.1.0", features = [ "mysql" ] }
-lazy_static = "1.4.0"
 async-std = { version = "1.6.2", features = [ "attributes" ] }
 surf = "1.0.3"
 serde_json = "1.0.55"

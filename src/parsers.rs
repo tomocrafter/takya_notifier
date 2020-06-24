@@ -1,18 +1,10 @@
 use anyhow::Result;
-use lazy_static::lazy_static;
 use regex::Regex;
 use std::iter::Iterator;
 
 use super::models::{Exterior, Item};
 
 const STATTRAK: &str = "StatTrak ";
-
-lazy_static! {
-    static ref SOLD_MATCHER: Regex = Regex::new(r"\(売約済み\) #(\d+)").unwrap();
-    static ref VANILLA_MATCHER: Regex = Regex::new(r"([A-Za-z ]+) \(Vanilla\) #(\d+)").unwrap();
-    static ref ITEM_MATCHER: Regex = Regex::new(r"([A-Za-z ]+) \(([-A-Za-z ]+)\) #(\d+)").unwrap();
-    static ref PRICE_MATCHER: Regex = Regex::new(r"販売価格: ([0-9,]+)円 *").unwrap();
-}
 
 pub struct ItemSection {
     // If item has already sold, then item may be None.
@@ -98,10 +90,12 @@ pub fn parse_item_section<'a>(
     match v.len() {
         1 => {
             // Vanilla Item or Sold
-            if let Some(sold_caps) = SOLD_MATCHER.captures(v[0]) {
+            let sold_matcher = Regex::new(r"\(売約済み\) #(\d+)").unwrap();
+            if let Some(sold_caps) = sold_matcher.captures(v[0]) {
                 order_id = sold_caps[1].parse()?;
             } else {
-                let caps = VANILLA_MATCHER
+                let vanilla_matcher = Regex::new(r"([A-Za-z ]+) \(Vanilla\) #(\d+)").unwrap();
+                let caps = vanilla_matcher
                     .captures(v[0])
                     .ok_or_else(|| ParseError::InvalidItemFormat(item_name_line.to_owned()))?;
                 name = Some(caps[1].to_owned());
@@ -110,7 +104,8 @@ pub fn parse_item_section<'a>(
         }
         2 => {
             // Normal item
-            let caps = ITEM_MATCHER
+            let item_matcher = Regex::new(r"([A-Za-z ]+) \(([-A-Za-z ]+)\) #(\d+)").unwrap();
+            let caps = item_matcher
                 .captures(v[1])
                 .ok_or_else(|| ParseError::InvalidItemFormat(item_name_line.to_owned()))?;
             name = Some(v[0].to_owned());
@@ -151,7 +146,8 @@ pub fn parse_item_section<'a>(
 
     // Parse price
     let price = {
-        let caps = PRICE_MATCHER.captures(price_line).unwrap();
+        let price_matcher = Regex::new(r"販売価格: ([0-9,]+)円 *").unwrap();
+        let caps = price_matcher.captures(price_line).unwrap();
 
         (caps[1]).replace(',', "").parse()?
     };
