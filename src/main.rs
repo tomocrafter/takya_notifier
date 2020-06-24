@@ -46,8 +46,7 @@ async fn main() -> anyhow::Result<(), CapturedError> {
     dotenv::dotenv()?; // Need to load .env blocking, because will not be used as returned value.
 
     #[cfg(feature = "sentry")]
-    let _guard =
-        sentry::init(env::var("SENTRY_DSN")?);
+    let _guard = sentry::init(env::var("SENTRY_DSN")?);
 
     let dom = Html::parse_document({
         let start = std::time::Instant::now();
